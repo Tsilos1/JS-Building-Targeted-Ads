@@ -1,18 +1,22 @@
 // get user's data
 // get user's coordinates
 
-// Get the user's coordinates:                                                              
+                                                          
 // Get the user's coordinates:                                                              
 async function getCoords(){
     pos = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
-    return [pos.coords.latitude, pos.coords.longitude]
-}
-
-console.log(getCoords());                              
-
-
+    console.log(pos);  
+    if (pos.reject == true) {
+        console.log("Rejected"); 
+        return [43.089777, -89.415377]
+    }
+    else {
+        console.log("Returning Coords"); 
+        return [pos.coords.latitude, pos.coords.longitude]
+    } 
+}                       
 
 
 // get user's time                                                           
